@@ -1,0 +1,21 @@
+{
+  "name": "devtinder",
+  "version": "1.0.0",
+  "description": "A backend microservies of devtinder",
+  "main": "index.js",
+  "scripts": {
+    "start":"node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "keywords": [
+    "javascript",
+    "nodejs",
+    "mongodb"
+  ],
+  "author": "Shivam gupta",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1",
+    "nodemon": "^3.1.7"
+  }
+}
