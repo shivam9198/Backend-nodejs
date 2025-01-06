@@ -1,7 +1,7 @@
 const validator = require('validator');
 
 const validateSignupdata = (req)=>{
-    const {firstName ,lastName,email, password  } = req.body;
+    const {firstName ,lastName,email, password ,skills } = req.body;
     if(!firstName||!lastName){
         throw new Error("name is not valid");
     }
@@ -19,10 +19,21 @@ const validateSignupdata = (req)=>{
     else if(!validator.isStrongPassword(password)){
         throw new Error("try another password");
     }
+    else if(skills.length>10){
+        throw new Error("skills should be less than 10");
+    }
 
+}
+const validateProfileedit = (req)=>{
+    const allowedFields = ["firstName","lastName","skills","bio","dateOfBirth","age","profilePic","gender","socialLinks"];
+    const isUpdateAllowed = Object.keys(req.body).every((field)=>(
+        allowedFields.includes(field)
+    ));
+  
+    return isUpdateAllowed;
 }
 
 module.exports ={
-    validateSignupdata
+    validateSignupdata ,validateProfileedit
 
 }
