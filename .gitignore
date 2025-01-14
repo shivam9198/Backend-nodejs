@@ -2,4 +2,4 @@ node_modules
 
 # Ignore app.js and app2.js
 app.js
-app2.jsgit add .
+app2.js
