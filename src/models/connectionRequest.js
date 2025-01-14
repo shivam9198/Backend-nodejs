@@ -23,7 +23,7 @@ const connectionSchema = new mongoose.Schema({
 
 },{timestamps:true});
 
-//mongoose middle ware this runs when me hit save then this middleware runs 
+//mongoose middle ware this runs when we hit save then this middleware runs 
 connectionSchema.pre("save",function(next){
     const connectionRequests = this;
     if(connectionRequests.fromuserId.equals(connectionRequests.touserId)){
