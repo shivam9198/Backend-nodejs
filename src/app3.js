@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 const connectDb = require('./config/database');
-const cokkieparse = require('cookie-parser') ;
+const cokkieparser = require('cookie-parser') ;
+const cors = require('cors');
 
 
 const authoRouter = require('../src/routes/auth');
@@ -12,7 +13,14 @@ const userRouter =  require('./routes/user');
 
 
 app.use(express.json());
-app.use(cokkieparse());
+app.use(cokkieparser());
+app.use(cors( {  //this the middleware cors middle ware used to resolev the cros oringin eror and 
+    origin : "http://localhost:5173", // we have to five the origin of our fronted app
+    credentials : true ,//this is used to allow the cokkie to be set in the browser
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+}));
+
 
 app.use('/',authoRouter);
 app.use('/',profileRouter);
