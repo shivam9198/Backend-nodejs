@@ -6,11 +6,12 @@ const bcrypt = require('bcrypt');
 const validator = require('validator');
 
 
+
 authRouter.post('/signup',async(req,res)=>{
    
     try {
         //get  data from the user like email pass ... for signup
-        const {firstName,lastName,email,password,} = req.body
+        const {firstName,lastName,email,password} = req.body
         //validate signup data
         validateSignupdata(req);
         //create a passwordhash
@@ -18,9 +19,17 @@ authRouter.post('/signup',async(req,res)=>{
          //creating a users from user-instance
          const users = new user({firstName,lastName,email,password: passwordhash});
          //save users to the database
-         await users.save();
+        const savedusers =  await users.save();
+        const token = await savedusers.getjwt();
+
+    res.cookie("token", token, {
+      expires: new Date(Date.now() + 8 * 3600000),
+    });
        
-        res.status(200).send("user created successfully");
+        res.json({
+            message:  'your profile created successfuly',
+            data: savedusers,
+          });
         
         
     } catch (error) {
@@ -42,12 +51,12 @@ authRouter.post('/login',async (req,res)=>{
         //find the user in the database
         const users = await user.findOne({ email })
         if(!users){
-            throw new Error("User not found");
+            throw new Error("Invalid credentials");
         }
         //decrypt the password
         const isMatch = await users.verifyPassword(password);
         if(!isMatch){
-            throw new Error("Invalid password");
+            throw new Error("Invalid credentials");
         }
         //create a jwt token
         const token = await users.getjwt();

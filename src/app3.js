@@ -17,7 +17,7 @@ app.use(cokkieparser());
 app.use(cors( {  //this the middleware cors middle ware used to resolev the cros oringin eror and 
     origin : "http://localhost:5173", // we have to five the origin of our fronted app
     credentials : true ,//this is used to allow the cokkie to be set in the browser
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE","PATCH"],
     allowedHeaders: ["Content-Type", "Authorization"],
 }));
 

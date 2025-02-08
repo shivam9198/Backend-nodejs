@@ -6,7 +6,7 @@ const User = require('../models/user');
 
 
 
-const User_SAFE_DATA = ['firstName', 'lastName', 'age',"gender","skills","bio"];
+const User_SAFE_DATA = ['firstName', 'lastName', 'age',"gender","skills","bio" , "profilePic"];
 
 userRouter.get('/user/request/recived',userAutho,async(req,res)=>{
     try {

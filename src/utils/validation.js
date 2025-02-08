@@ -1,7 +1,7 @@
 const validator = require('validator');
 
 const validateSignupdata = (req)=>{
-    const {firstName ,lastName,email, password ,skills } = req.body;
+    const {firstName ,lastName,email, password  } = req.body;
     if(!firstName||!lastName){
         throw new Error("name is not valid");
     }
@@ -19,13 +19,25 @@ const validateSignupdata = (req)=>{
     else if(!validator.isStrongPassword(password)){
         throw new Error("try another password");
     }
-    else if(skills.length>10){
-        throw new Error("skills should be less than 10");
-    }
+  
 
 }
 const validateProfileedit = (req)=>{
+    const {firstName ,lastName, age, } = req.body;
     const allowedFields = ["firstName","lastName","skills","bio","dateOfBirth","age","profilePic","gender","socialLinks"];
+    if(age<18){
+        throw new Error("age should be greater than 18");
+    }
+    if(!firstName || !firstName.trim()){
+        throw new Error("first name cannot be empty");
+}
+     if(!/^[A-Za-z\s]+$/.test(firstName)){
+    throw new Error("first name should contain only letters");
+}
+    if(!/^[A-Za-z\s]+$/.test(lastName)){
+    throw new Error("last name should contain only letters");
+}
+
     const isUpdateAllowed = Object.keys(req.body).every((field)=>(
         allowedFields.includes(field)
     ));

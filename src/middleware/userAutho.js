@@ -5,7 +5,7 @@ const userAutho =async (req,res,next)=>{
         //read the token 
     const {token} = req.cookies;
     if(!token){
-        throw new Error("Invalid cookie");
+      return   res.status(401).send("please login!");
     }
     //validate the token 
     const decodedMessage = await jwt.verify(token,"Scretkey");

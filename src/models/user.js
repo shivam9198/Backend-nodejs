@@ -62,14 +62,14 @@ const userSchema = new mongoose.Schema({
      gender:{
         type: String,
         validate(value){
-            if(!["male","female","other"].includes(value)){
-                throw new Error("gender must be male, female, or other");
+            if(!["Male","Female","other"].includes(value)){
+                throw new Error("gender must be Male, female, or other");
             }
         }},
      
      bio:{
        type: String,
-       maxlength:500,
+       maxlength:100,
         default: "No bio provided",
 },
      skills:{
