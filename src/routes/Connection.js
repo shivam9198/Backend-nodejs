@@ -94,6 +94,6 @@ connectionRouter.post('/request/review/:status/:requestId',userAutho,async(req,r
 
 })
 
-connectionRouter.get('/')
+
 
 module.exports = connectionRouter ;
