@@ -8,7 +8,7 @@ const cors = require('cors');
 const authoRouter = require('../src/routes/auth');
 const profileRouter = require('../src/routes/profile');
 const connectionRouter = require('../src/routes/connection');
-const userRouter =  require('./routes/user');
+const userRouter =  require('../src/routes/user');
 
 
 
