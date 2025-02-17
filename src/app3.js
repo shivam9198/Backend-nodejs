@@ -38,7 +38,7 @@ connectDb()
     console.log("database connection is established");
     app.listen("3000",()=>{
      
-        console.log("listening on a port 777");
+        console.log("listening on a port 3000");
     });
 }
    
