@@ -33,6 +33,5 @@ connectionSchema.pre("save",function(next){
 })
 
 
-const ConnectionRequest= mongoose.model("ConnectionRequest",connectionSchema ) ;//model ka nam h connectionRequest and model bna h connectioSchema k schema se 
+module.exports = mongoose.models.ConnectionRequest || mongoose.model('ConnectionRequest', connectionSchema);
 
-module.exports =  ConnectionRequest;
