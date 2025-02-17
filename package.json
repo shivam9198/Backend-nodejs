@@ -4,7 +4,7 @@
   "description": "A backend microservies of devtinder",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/app3.js",
+    "start": "node src/app3.js",
     "dev": "nodemon src/app3.js"
   },
   "keywords": [
