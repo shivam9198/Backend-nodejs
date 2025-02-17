@@ -5,10 +5,10 @@ const cokkieparser = require('cookie-parser') ;
 const cors = require('cors');
 
 
-const authoRouter = require('../src/routes/auth');
-const profileRouter = require('../src/routes/profile');
-const connectionRouter = require('../src/routes/connection');
-const userRouter =  require('../src/routes/user');
+const authoRouter = require('./src/routes/auth');
+const profileRouter = require('./src/routes/profile');
+const connectionRouter = require('./src/routes/connection');
+const userRouter =  require('./src/routes/user');
 
 
 
