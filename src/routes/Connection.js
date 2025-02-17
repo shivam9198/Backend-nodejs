@@ -1,7 +1,7 @@
 const express = require('express');
 const { userAutho } = require('../middleware/userAutho');
 const connectionRouter = express.Router();
-const ConnectionRequest = require('../models/connectionRequest');
+const ConnectionRequest = require('../models/ConnectionRequest');
 const User = require('../models/user');
 
 
