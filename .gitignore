@@ -3,3 +3,4 @@ node_modules
 # Ignore app.js and app2.js
 app.js
 app2.js
+.env

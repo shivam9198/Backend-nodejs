@@ -8,7 +8,7 @@ const userAutho =async (req,res,next)=>{
       return   res.status(401).send("please login!");
     }
     //validate the token 
-    const decodedMessage = await jwt.verify(token,"Scretkey");
+    const decodedMessage = await jwt.verify(token,process.env.Scret_Key);
     if(!decodedMessage){
         throw new Error("Invalid token");
     }
