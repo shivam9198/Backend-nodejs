@@ -3,7 +3,7 @@ const { userAutho } = require('../middleware/userAutho');
 const connectionRouter = express.Router();
 const ConnectionRequest = require('../models/ConnectionRequest');
 const User = require('../models/user');
-
+const sesEmail = require('../utils/sendEmail');
 
 
 connectionRouter.post('/request/:status/:userid',userAutho,async(req,res)=>{
@@ -51,11 +51,36 @@ connectionRouter.post('/request/:status/:userid',userAutho,async(req,res)=>{
             }
       )
       await connectionRequests.save();
-      // Populate `touserId` after saving to include `firstName` and `lastName`
+       // Populate `touserId` after saving to include `firstName` and `lastName`
 const populatedConnection = await connectionRequests.populate("touserId", "firstName lastName");
 
 // Extract `firstName` and `lastName` from the populated data
 const { firstName, lastName } = populatedConnection.touserId;
+    // Email Subject & Body
+const emailSubject = `🚀 New Connection Request from ${touser.firstName}!`;
+const emailBody = `
+Hello ${ req.user.firstName},
+
+You have received a new connection request from ${touser.firstName}.
+
+👉 Status: ${status}  
+💬 Message: ${touser.firstName} is ${status} in connecting with you.  
+
+To respond to the request, visit your profile:  
+🔗 [Click here to view request]
+
+Looking forward to meaningful connections!
+
+Best,  
+SomeOne.Dev Team
+`;
+
+if(status === "interested"){
+      const emailres = await sesEmail.run(emailSubject, emailBody);
+      console.log(emailres);
+}
+     
+
 res.status(200).send(`Connection request marked as '${status}' for user: ${firstName} ${lastName}`);
     } catch (error) {
         res.status(404).send(error.message);
