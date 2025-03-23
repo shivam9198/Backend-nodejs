@@ -58,8 +58,7 @@ const populatedConnection = await connectionRequests.populate("touserId", "first
 const { firstName, lastName } = populatedConnection.touserId;
     // Email Subject & Body
 const emailSubject = `🚀 New Connection Request from ${touser.firstName}!`;
-const emailBody = `
-Hello ${ req.user.firstName},
+const emailBody = `Hello ${ req.user.firstName},
 
 You have received a new connection request from ${touser.firstName}.
 

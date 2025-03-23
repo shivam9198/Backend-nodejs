@@ -10,6 +10,7 @@ const authoRouter = require('./routes/auth');
 const profileRouter = require('./routes/profile');
 const connectionRouter = require('./routes/Connection');
 const userRouter =  require('./routes/user');
+const paymentRouter = require('./routes/payment');
 
 
 
@@ -27,6 +28,7 @@ app.use('/',authoRouter);
 app.use('/',profileRouter);
 app.use('/',connectionRouter);
 app.use('/',userRouter);
+app.use('/',paymentRouter)
 
 
 
